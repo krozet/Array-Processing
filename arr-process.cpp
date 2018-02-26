@@ -2,7 +2,7 @@
 Keawa Rozet
 CSc 600-01 - Programming Languages
 Homework #2
-Integer Plot Function
+Array Processing
 */
 
 #include <iostream>
@@ -25,7 +25,7 @@ int main(int argc, char const** argv) {
   //creates the new reduced array
   int newSize = reduce(array, size);
   int reducedArray[newSize];
-  std::copy(array, array + newSize, reducedArray);
+  std::copy(array, array + newSize, reduc!edArray);
 
   //prints the new array after the reduce method
   std::cout << "\nAfter reduction: ";
@@ -65,7 +65,7 @@ int reduce(int* array, int size) {
       i -= 1;
     }
   }
-  
+
   //returns the new size of the array
   return size;
 }
