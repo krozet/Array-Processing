@@ -9,33 +9,39 @@ Integer Plot Function
 #include <algorithm>
 #include <stdio.h>
 #include <cstring>
+#include <vector>
 
-void reduce(int* array, int size);
+int reduce(int* array, int size);
 
 int main(int argc, char const** argv) {
   int array[] = {9,1,1,6,7,1,2,3,3,5,6,6,6,6,7,9};
   int size = sizeof(array)/sizeof(int);
 
-  std::cout << "\nBefore reduction: ";
+  //prints array before the reduce method
+  std::cout << "Before reduction: ";
   for (int i = 0; i < size; i++)
     std::cout << array[i] << " ";
 
-  reduce(array, size);
+  //creates the new reduced array
+  int newSize = reduce(array, size);
+  int reducedArray[newSize];
+  std::copy(array, array + newSize, reducedArray);
 
-  size = sizeof(array)/sizeof(int);
+  //prints the new array after the reduce method
   std::cout << "\nAfter reduction: ";
-  for (int i = 0; i < size; i++)
-    std::cout << array[i] << " ";
+  for (int i = 0; i < newSize; i++)
+    std::cout << reducedArray[i] << " ";
   std::cout << "\n";
 
   return 0;
 }
 
-void reduce(int* array, int size) {
+int reduce(int* array, int size) {
   int min = 0;
   int mid = 0;
   int max = 0;
 
+  //finds min, mid, max
   for (int i = 0; i < size; i++) {
     if (array[i] > max) {
       min = mid;
@@ -51,8 +57,15 @@ void reduce(int* array, int size) {
     }
   }
 
-  printf("\nMin: %d\tMid: %d\tMax: %d\n", min, mid, max);
-  array = std::remove(array, array + sizeof(array)/sizeof(int), min);
-  array = std::remove(array, array + sizeof(array)/sizeof(int), mid);
-  array = std::remove(array, array + sizeof(array)/sizeof(int), max);
+  //removes min, mid, and max
+  for (int i = 0; i < size; i++) {
+    if (array[i] == min || array[i] == mid || array[i] == max) {
+      std::copy(array + i+1, array + size, array + i);
+      size -= 1;
+      i -= 1;
+    }
+  }
+  
+  //returns the new size of the array
+  return size;
 }
