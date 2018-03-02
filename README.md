@@ -20,7 +20,7 @@ My method for reducing the array involves moving through the array and finding t
 
 The portion of my method that takes the longest is where I have to remove each value from the array and shift the remaining elements over by one value to the left. This process can&#39;t be helped while working with integer arrays, and I believe switching to using vectors instead would help improve performance here.
 
-Since the problem asked for a simple and quick solution, I decided to go with the method down below. If I were ask to improve the algorithm&#39;s performance, I would have gone with my original plan invloving a pointer at each end of the array, both finding the three highest values, and once they pass each other begin removing those values from the array. I believe this would increase performance by a fair amount but not enough to sacrifice the simplicity the problem asked for.
+Since the problem asked for a simple and quick solution, I decided to go with the method down below. If I were asked to improve the algorithm&#39;s performance, I would have gone with my original plan involving a pointer at each end of the array, both finding the three highest values, and once they pass each other begin removing those values from the array. I believe this would increase performance by a fair amount but not enough to sacrifice the simplicity the problem asked for.
 
 # Source Code
 
